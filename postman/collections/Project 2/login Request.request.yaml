@@ -1,0 +1,17 @@
+$kind: http-request
+description: ""
+url: api/login?login=user&password=baguette
+method: POST
+queryParams:
+  - key: login
+    value: user
+    disabled: false
+    description: ""
+  - key: password
+    value: baguette
+    disabled: false
+    description: ""
+body:
+  type: json
+  content: ""
+order: 2000
