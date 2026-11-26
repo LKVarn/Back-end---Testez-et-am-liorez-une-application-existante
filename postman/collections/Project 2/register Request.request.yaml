@@ -1,0 +1,17 @@
+$kind: http-request
+url: localhost:8080/api/register
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"firstName\": \"Jojo\",\r
+
+    \    \"lastName\": \"La Fripouille\",\r
+
+    \    \"login\": \"user\",\r
+
+    \    \"password\": \"baguette\"\r
+
+    }"
+order: 1000
