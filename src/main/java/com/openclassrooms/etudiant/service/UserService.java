@@ -5,6 +5,8 @@ import com.openclassrooms.etudiant.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -36,13 +38,14 @@ public class UserService {
     public String login(String login, String password) {
         Assert.notNull(login, "Login must not be null");
         Assert.notNull(password, "Password must not be null");
+
         Optional<User> user = userRepository.findByLogin(login);
         if (user.isPresent() && passwordEncoder.matches(password, user.get().getPassword())) {
             UserDetails userDetails = org.springframework.security.core.userdetails.User.builder()
                     .username(login).password(password).build();
             return jwtService.generateToken(userDetails);
         } else {
-            throw new IllegalArgumentException("Invalid credentials");
+            throw new BadCredentialsException("Invalid credentials");
         }
     }
 
