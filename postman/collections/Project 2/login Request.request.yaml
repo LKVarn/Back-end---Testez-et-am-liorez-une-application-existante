@@ -1,17 +1,14 @@
 $kind: http-request
 description: ""
-url: api/login?login=user&password=baguette
+url: localhost:8080/api/login
 method: POST
-queryParams:
-  - key: login
-    value: user
-    disabled: false
-    description: ""
-  - key: password
-    value: baguette
-    disabled: false
-    description: ""
 body:
   type: json
-  content: ""
+  content: "{\r
+
+    \    \"login\": \"user\",\r
+
+    \    \"password\": \"password\"\r
+
+    }"
 order: 2000

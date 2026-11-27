@@ -1,0 +1,19 @@
+$kind: http-request
+url: localhost:8080/api/createStudent
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"firstName\": \"First Student1\",\r
+
+    \    \"lastName\": \"Last Student1\",\r
+
+    \    \"section\": \"Section Student1\"\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_177h}}"
+order: 3000

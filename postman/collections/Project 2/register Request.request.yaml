@@ -5,13 +5,13 @@ body:
   type: json
   content: "{\r
 
-    \    \"firstName\": \"Jojo\",\r
+    \    \"firstName\": \"test_firstname\",\r
 
-    \    \"lastName\": \"La Fripouille\",\r
+    \    \"lastName\": \"test_lastname\",\r
 
     \    \"login\": \"user\",\r
 
-    \    \"password\": \"baguette\"\r
+    \    \"password\": \"password\"\r
 
     }"
 order: 1000
