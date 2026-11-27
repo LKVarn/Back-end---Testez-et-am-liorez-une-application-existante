@@ -40,4 +40,18 @@ public class StudentService {
 		studentRepository.save(student);
 	}
 
+	public void updateLastName(Long id, String lastName) {
+		Student student = studentRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Student not found with id: " + id));
+		student.setLastName(lastName);
+		studentRepository.save(student);
+	}
+
+		public void updateSection(Long id, String section) {
+		Student student = studentRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Student not found with id: " + id));
+		student.setSection(section);
+		studentRepository.save(student);
+	}
+
 }

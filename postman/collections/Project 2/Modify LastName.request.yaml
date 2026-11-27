@@ -1,0 +1,12 @@
+$kind: http-request
+description: ""
+url: http://localhost:8080/api/modifyStudents/1/lastname
+method: PUT
+body:
+  type: json
+  content: '{"lastName": "new lastName"}'
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_09e7}}"
+order: 6000

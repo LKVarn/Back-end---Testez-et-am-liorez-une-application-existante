@@ -40,10 +40,21 @@ public class StudentController {
         return ResponseEntity.ok(studentService.getAllStudent());
     }
 
-    @PutMapping("/api/students/{id}/firstname")
-    public ResponseEntity<Void> updateStudentFirstName(@PathVariable Long id, @RequestBody String firstName) {
+    @PutMapping("/api/modifyStudents/{id}/firstname")
+    public ResponseEntity<Void> updateStudentFirstName(@PathVariable Long id, @RequestBody StudentDTO request) {
+        studentService.updateFirstName(id, request.firstName());
+        return ResponseEntity.noContent().build();
+    }
 
-        studentService.updateFirstName(id, firstName);
+    @PutMapping("/api/modifyStudents/{id}/lastname")
+    public ResponseEntity<Void> updateStudentLastName(@PathVariable Long id, @RequestBody StudentDTO request) {
+        studentService.updateLastName(id, request.lastName());
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/api/modifyStudents/{id}/section")
+    public ResponseEntity<Void> updateStudentSection(@PathVariable Long id, @RequestBody StudentDTO request) {
+        studentService.updateSection(id, request.section());
         return ResponseEntity.noContent().build();
     }
 }
