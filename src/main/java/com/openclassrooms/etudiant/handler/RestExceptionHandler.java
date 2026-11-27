@@ -1,9 +1,12 @@
 package com.openclassrooms.etudiant.handler;
 
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -13,7 +16,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.nio.file.AccessDeniedException;
 import java.time.LocalDateTime;
 
-@RestControllerAdvice
+@ControllerAdvice
+@Order(Ordered.HIGHEST_PRECEDENCE)
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -54,6 +58,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     private void logError(Exception exception) {
         logger.error(exception.getMessage(), exception);
+        exception.printStackTrace();
     }
 
     private ErrorDetails getErrorDetails(Exception exception, WebRequest request) {

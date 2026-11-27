@@ -1,6 +1,7 @@
 package com.openclassrooms.etudiant.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,11 @@ public class StudentService {
 		}
 		studentRepository.save(student);
 		return "200";
+	}
+	
+	public List<Student> getAllStudent()
+	{
+		return studentRepository.findAll();
 	}
 
 }

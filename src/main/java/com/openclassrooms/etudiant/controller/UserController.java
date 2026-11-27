@@ -30,18 +30,9 @@ public class UserController {
     }
 
     @PostMapping("/api/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequestDTO loginRequestDTO) {
-		try {
+    public ResponseEntity<?> login(@Valid @RequestBody LoginRequestDTO loginRequestDTO) {
 	        String jwtToken = userService.login(loginRequestDTO.getLogin(), loginRequestDTO.getPassword());
 	        return ResponseEntity.ok(jwtToken);
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-			return ResponseEntity.badRequest().body(e.getMessage());
-		} catch (BadCredentialsException e) {
-			e.printStackTrace();
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
 		}
     }
 
-
-}

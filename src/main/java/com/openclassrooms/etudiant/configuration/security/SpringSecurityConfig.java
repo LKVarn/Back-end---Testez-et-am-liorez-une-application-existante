@@ -33,6 +33,7 @@ import com.nimbusds.jose.jwk.source.ImmutableSecret;
 @EnableWebSecurity
 public class SpringSecurityConfig {
 	
+	//a migrer vers les propriétés
 	private static final String JWT_SECRET = "JWT SECRET GARANTISSANT LE BON FONCTIONNEMENT DU LOGIN";
 
     @Autowired
