@@ -33,4 +33,11 @@ public class StudentService {
 		return studentRepository.findAll();
 	}
 
+	public void updateFirstName(Long id, String firstName) {
+		Student student = studentRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Student not found with id: " + id));
+		student.setFirstName(firstName);
+		studentRepository.save(student);
+	}
+
 }
